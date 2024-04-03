@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .guide {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <div class="container">
+        <form>
+            <label for="weight">Weight (lbs):</label>
+            <input type="number" id="weight" required>
+
+            <br> <!-- Add a line break here -->
+
+            <label for="height">Height (inches):</label>
+            <input type="number" id="height" required>
+
+            <input type="submit" value="Calculate">
+        </form>
+
+        <div class="result">
+            <h3>Result:</h3>
+            <p id="bmi"></p>
+        </div>
+
+        <div class="guide">
+            <h3>BMI Categories:</h3>
+            <ul>
+                <li>Underweight: less than 18.5</li>
+                <li>Normal weight: 18.5 - 24.9</li>
+                <li>Overweight: 25 - 29.9</li>
+                <li>Obesity (Class 1): 30 - 34.9</li>
+                <li>Obesity (Class 2): 35 - 39.9</li>
+                <li>Obesity (Class 3): 40 or higher</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const bmiResult = document.getElementById('bmi');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height)) {
+                bmiResult.textContent = 'Please enter valid values for weight and height.';
+            } else {
+                const bmi = calculateBMI(weight, height);
+                bmiResult.textContent = `Your BMI is: ${bmi.toFixed(2)} kg/m²`;
+            }
+        });
+
+        function calculateBMI(weight, height) {
+            const weightInKg = weight * 0.453592; // Convert pounds to kilograms
+            const heightInMeter = height * 0.0254; // Convert inches to meters
+            return weightInKg / (heightInMeter * heightInMeter);
+        }
+    </script>
+</body>
+</html>
