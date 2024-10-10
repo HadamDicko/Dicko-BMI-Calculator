@@ -2,4 +2,4 @@
 
 Simple BMI calculator
 
-<img width="1440" alt="Screen Shot 2023-09-04 at 3 29 46 PM" src="https://github.com/user-attachments/assets/40f7fb2a-3807-43a3-8a8b-81d5db335403">
+![Screenshot 2024-10-09 at 2 43 34 PM](https://github.com/user-attachments/assets/fe6f12b4-2b04-4ea7-aa4e-c0a9134c64d8)
